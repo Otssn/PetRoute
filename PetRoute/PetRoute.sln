@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetRoute.API", "PetRoute.API\PetRoute.API.csproj", "{6F23085C-751E-4CA3-B659-50B76D2F9683}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetRoute.commons", "PetRoute.commons\PetRoute.commons.csproj", "{CFA3A78E-9620-4FED-9975-3273A8BD9F8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F23085C-751E-4CA3-B659-50B76D2F9683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F23085C-751E-4CA3-B659-50B76D2F9683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F23085C-751E-4CA3-B659-50B76D2F9683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F23085C-751E-4CA3-B659-50B76D2F9683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA3A78E-9620-4FED-9975-3273A8BD9F8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA3A78E-9620-4FED-9975-3273A8BD9F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA3A78E-9620-4FED-9975-3273A8BD9F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA3A78E-9620-4FED-9975-3273A8BD9F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00EB275E-F855-4756-82CB-0C7280110459}
+	EndGlobalSection
+EndGlobal
