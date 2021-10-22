@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using PetRoute.API.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PetRoute.API.Data.Entities
+namespace PetRoute.API.Models
 {
-    public class Pet
+    public class PetViewModel
     {
         public int Id { get; set; }
 
@@ -18,17 +21,14 @@ namespace PetRoute.API.Data.Entities
         [Display(Name = "Raza de la mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
-        public Race race { get; set; }
+        public int raceId { get; set; }
+        public IEnumerable<SelectListItem> races { get; set; }
 
         [Display(Name = "Tipo de mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
-        public PetType petType { get; set; }
-
-        [Display(Name = "Propietario")]
-        [JsonIgnore]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public User User { get; set; }
+        public int petTypeId { get; set; }
+        public IEnumerable<SelectListItem> PetTypes { get; set; }
 
         public ICollection<ScheduledTrip> scheduledTrips { get; set; }
 
@@ -36,18 +36,14 @@ namespace PetRoute.API.Data.Entities
 
         public ICollection<PhotoPet> photoPets { get; set; }
 
-        [Display(Name = "# Fotos")]
-        public int PetPhotosCount => photoPets == null ? 0 : photoPets.Count;
-
         [Display(Name = "Foto")]
-        public string ImageFullPath => photoPets == null || photoPets.Count == 0
-            ? $"https://localhost:44355/images/noimage.png"
-            : photoPets.FirstOrDefault().ImageFullPath;
+        public IFormFile ImageFile { get; set; }
 
         [Display(Name = "Descripción de la mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public string description { get; set; }
-    }
 
+        public String UserId { get; set; }
+    }
 }

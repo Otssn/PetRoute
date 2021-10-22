@@ -42,7 +42,7 @@ namespace PetRoute.API.Data.Entities
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44355/images/noimage.png"
-            : $"https://vehiclesotssn.blob.core.windows.net/users/{ImageId}";
+            : $"https://petroute.blob.core.windows.net/users/{ImageId}";
 
         [Display(Name = "Tipo de usuario")]
         public UserType userType { get; set; }

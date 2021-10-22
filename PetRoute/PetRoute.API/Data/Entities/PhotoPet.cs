@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PetRoute.API.Data.Entities
@@ -9,6 +10,10 @@ namespace PetRoute.API.Data.Entities
     public class PhotoPet
     {
         public int Id { get; set; }
+
+        [JsonIgnore]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public Pet pet { get; set; }
 
         [Display(Name = "Foto")]
         public Guid ImageId { get; set; }
@@ -18,6 +23,6 @@ namespace PetRoute.API.Data.Entities
         [Display(Name = "Foto")]
         public String ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44355/images/noimage.png"
-            : $"https://vehiclesotssn.blob.core.windows.net/vehicles/{ImageId}";
+            : $"https://petroute.blob.core.windows.net/vehicles/{ImageId}";
     }
 }

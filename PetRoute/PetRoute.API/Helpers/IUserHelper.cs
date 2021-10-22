@@ -9,7 +9,7 @@ using PetRoute.API.Models;
 
 namespace PetRoute.API.Helpers
 {
-    interface IUserHelper
+    public interface IUserHelper
     {
         Task<User> GetUserAsync(string email);
         Task<User> GetUserAsync(Guid id);

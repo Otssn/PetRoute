@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetRoute.commons.Models
 {
-    class Responses
+    public class Responses
     {
         public bool IsSuccess { get; set; }
 

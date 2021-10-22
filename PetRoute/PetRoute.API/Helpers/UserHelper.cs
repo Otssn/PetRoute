@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PetRoute.API.Data;
 using PetRoute.API.Data.Entities;
 using PetRoute.API.Models;
@@ -24,6 +25,7 @@ namespace PetRoute.API.Helpers
             _dataContext = dataContext;
             _signInManager = signInManager;
         }
+
         public async Task<IdentityResult> AddUserAsync(User user, string password)
         {
             return await _userManager.CreateAsync(user, password);
@@ -33,7 +35,7 @@ namespace PetRoute.API.Helpers
         {
             User user = new()
             {
-                Addres = model.Address,
+                Address = model.Address,
                 Document = model.Document,
                 Email = model.Username,
                 FirstName = model.FirstName,
@@ -101,11 +103,11 @@ namespace PetRoute.API.Helpers
         {
             return await _dataContext.Users
                 .Include(x => x.DocumentType)
-                .Include(x => x.Vehicles)
-                .ThenInclude(x => x.VehiclePhotos)
-                .Include(x => x.Vehicles)
-                .ThenInclude(x => x.Histories)
-                .ThenInclude(x => x.Details)
+                .Include(x => x.pet)
+                .ThenInclude(x => x.photoPets)
+                .Include(x => x.pet)
+                .ThenInclude(x => x.historyTrips)
+                .ThenInclude(x => x.description)
                 .FirstOrDefaultAsync(x => x.Id == id.ToString());
         }
 
@@ -131,7 +133,7 @@ namespace PetRoute.API.Helpers
             currentUser.FirstName = user.FirstName;
             currentUser.DocumentType = user.DocumentType;
             currentUser.Document = user.Document;
-            currentUser.Addres = user.Addres;
+            currentUser.Address = user.Address;
             currentUser.ImageId = user.ImageId;
             currentUser.PhoneNumber = user.PhoneNumber;
             return await _userManager.UpdateAsync(currentUser);
@@ -148,81 +150,6 @@ namespace PetRoute.API.Helpers
         public async Task<SignInResult> ValidatePasswordAsync(User user, string password)
         {
             return await _signInManager.CheckPasswordSignInAsync(user, password, false);
-        }
-
-        Task<User> IUserHelper.GetUserAsync(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<User> IUserHelper.GetUserAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IdentityResult> AddUserAsync(User user, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> AddUserAsync(AddUserViewModel model, Guid imageId, UserType userType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IdentityResult> UpdateUserAsync(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IdentityResult> DeleteUserAsync(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddUserToRoleAsync(User user, string roleName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> IsUserInRoleAsync(User user, string roleName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<SignInResult> LoginAsync(LoginViewModel model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> GenerateEmailConfirmationTokenAsync(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IdentityResult> ConfirmEmailAsync(User user, string token)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> GeneratePasswordResetTokenAsync(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IdentityResult> ResetPasswordAsync(User user, string token, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<SignInResult> ValidatePasswordAsync(User user, string password)
-        {
-            throw new NotImplementedException();
         }
     }
 }
