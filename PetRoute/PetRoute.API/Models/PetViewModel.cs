@@ -15,18 +15,16 @@ namespace PetRoute.API.Models
 
         [Display(Name = "Nombre de la mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
+        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public String name { get; set; }
 
         [Display(Name = "Raza de la mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public int raceId { get; set; }
         public IEnumerable<SelectListItem> races { get; set; }
 
         [Display(Name = "Tipo de mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public int petTypeId { get; set; }
         public IEnumerable<SelectListItem> PetTypes { get; set; }
 
@@ -40,8 +38,7 @@ namespace PetRoute.API.Models
         public IFormFile ImageFile { get; set; }
 
         [Display(Name = "Descripción de la mascota")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
+        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public string description { get; set; }
 
         public String UserId { get; set; }

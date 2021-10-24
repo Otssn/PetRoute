@@ -23,6 +23,6 @@ namespace PetRoute.API.Data.Entities
         [Display(Name = "Foto")]
         public String ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44355/images/noimage.png"
-            : $"https://petroute.blob.core.windows.net/vehicles/{ImageId}";
+            : $"https://petroute.blob.core.windows.net/pets/{ImageId}";
     }
 }

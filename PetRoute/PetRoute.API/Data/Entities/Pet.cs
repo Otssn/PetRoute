@@ -13,17 +13,14 @@ namespace PetRoute.API.Data.Entities
 
         [Display(Name = "Nombre de la mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public String name { get; set; }
 
         [Display(Name = "Raza de la mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public Race race { get; set; }
 
         [Display(Name = "Tipo de mascota")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public PetType petType { get; set; }
 
         [Display(Name = "Propietario")]
@@ -46,8 +43,6 @@ namespace PetRoute.API.Data.Entities
             : photoPets.FirstOrDefault().ImageFullPath;
 
         [Display(Name = "Descripción de la mascota")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener mas de {1} carácteres.")]
         public string description { get; set; }
     }
 

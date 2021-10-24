@@ -73,7 +73,7 @@ namespace PetRoute.API.Controllers
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);
 
-                Responses response = _mailHelper.SendMail(model.Email, "Vehicles - Confirmación de cuenta", $"<h1>Vehicles - Confirmación de cuenta</h1>" +
+                Responses response = _mailHelper.SendMail(model.Email, "PetRoute - Confirmación de cuenta", $"<h1>PetRoute - Confirmación de cuenta</h1>" +
                     $"Para habilitar el usuario, " +
                     $"por favor hacer clic en el siguiente enlace: </br></br><a href = \"{tokenLink}\">Confirmar Email</a>");
 
@@ -197,7 +197,7 @@ namespace PetRoute.API.Controllers
             Guid imageId = Guid.Empty;
             if (petViewModel.ImageFile != null)
             {
-                imageId = await _blobHelper.UploadBlobAsync(petViewModel.ImageFile, "vehicles");
+                imageId = await _blobHelper.UploadBlobAsync(petViewModel.ImageFile, "pets");
             }
 
             Pet pet = await _converterHelper.ToPetAsync(petViewModel, true);
@@ -372,7 +372,7 @@ namespace PetRoute.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                Guid imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "vehicles");
+                Guid imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "pets");
                 Pet pet = await _context.pet
                     .Include(x => x.photoPets)
                     .FirstOrDefaultAsync(x => x.Id == model.PetId);

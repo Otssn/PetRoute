@@ -51,6 +51,6 @@ namespace PetRoute.API.Data.Entities
         public string FullName => $"{FirstName} {LastName}";
         public ICollection<Pet> pet { get; set; }
         [Display(Name = "# mascotas")]
-        public int VehiclesCount => pet == null ? 0 : pet.Count;
+        public int PetCount => pet == null ? 0 : pet.Count;
     }
 }

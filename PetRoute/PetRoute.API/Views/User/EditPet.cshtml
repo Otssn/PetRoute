@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="EditVehicle">
+        <form asp-action="EditPet">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="UserId" />
@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
-                <a asp-action="AddVehicleImage" asp-route-id="@Model.Id" class="btn btn-info">Agregar Foto</a>
+                <a asp-action="AddPetImage" asp-route-id="@Model.Id" class="btn btn-info">Agregar Foto</a>
                 <a asp-action="Details" asp-route-id="@Model.UserId" class="btn btn-success">Regresar</a>
             </div>
         </form>
@@ -81,7 +81,7 @@
                     ]
                 });
                 // Delete item
-                sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/User/DeleteImageVehicle/', false);
+                sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/User/DeleteImagePet/', false);
             });
     </script>
 }
