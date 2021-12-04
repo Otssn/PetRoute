@@ -59,7 +59,7 @@ namespace PetRoute.API.Models
 
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://petrouteapi20211202104619.azurewebsites.net/images/noimage.png"
+            ? $"https://localhost:44355/images/noimage.png"
             : $"https://petroute.blob.core.windows.net/users/{ImageId}";
     }
 }

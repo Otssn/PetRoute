@@ -50,8 +50,8 @@ namespace PetRoute.API.Models
         //TODO: FIX
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://petrouteapi20211202104619.azurewebsites.net/images/noimage.png"
-            : $"https://petroute.blob.core.windows.net/users/{ImageId}";
+            ? $"https://localhost:44355/images/noimage.png"
+            : $"https://vehiclesotssn.blob.core.windows.net/users/{ImageId}";
 
         [Display(Name = "Foto")]
         public IFormFile ImageFile { get; set; }

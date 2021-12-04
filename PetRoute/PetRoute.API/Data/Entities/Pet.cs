@@ -39,7 +39,7 @@ namespace PetRoute.API.Data.Entities
 
         [Display(Name = "Foto")]
         public string ImageFullPath => photoPets == null || photoPets.Count == 0
-            ? $"https://petrouteapi20211202104619.azurewebsites.net/images/noimage.png"
+            ? $"https://localhost:44355/images/noimage.png"
             : photoPets.FirstOrDefault().ImageFullPath;
 
         [Display(Name = "Descripción de la mascota")]
