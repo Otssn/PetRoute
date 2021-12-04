@@ -10,6 +10,7 @@ namespace PetRoute.commons.Enums
     {
         Admin,
         User,
-        walker
+        walker,
+        w
     }
 }
