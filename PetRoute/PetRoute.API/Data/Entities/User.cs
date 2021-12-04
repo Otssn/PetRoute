@@ -44,7 +44,7 @@ namespace PetRoute.API.Data.Entities
             ? $"https://localhost:44355/images/noimage.png"
             : $"https://petroute.blob.core.windows.net/users/{ImageId}";
 
-        [Display(Name = "Tipo de usuario")]
+        [Display(Name = "Tipo de usuarios")]
         public UserType userType { get; set; }
 
         [Display(Name = "Usuario")]
