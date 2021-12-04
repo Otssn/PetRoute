@@ -225,15 +225,17 @@ namespace PetRoute.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("petTypeId")
                         .HasColumnType("int");
@@ -284,12 +286,12 @@ namespace PetRoute.API.Migrations
                     b.Property<Guid>("ImageId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("petId")
+                    b.Property<int?>("PetId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("petId");
+                    b.HasIndex("PetId");
 
                     b.ToTable("photoPets");
                 });
@@ -444,18 +446,12 @@ namespace PetRoute.API.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SocialImageURL")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<int>("logerType")
-                        .HasColumnType("int");
 
                     b.Property<int>("userType")
                         .HasColumnType("int");
@@ -562,11 +558,9 @@ namespace PetRoute.API.Migrations
                         .WithMany("pet")
                         .HasForeignKey("TripInProgressId");
 
-                    b.HasOne("PetRoute.API.Data.Entities.User", "User")
+                    b.HasOne("PetRoute.API.Data.Entities.User", null)
                         .WithMany("pet")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.HasOne("PetRoute.API.Data.Entities.PetType", "petType")
                         .WithMany()
@@ -579,19 +573,13 @@ namespace PetRoute.API.Migrations
                     b.Navigation("petType");
 
                     b.Navigation("race");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PetRoute.API.Data.Entities.PhotoPet", b =>
                 {
-                    b.HasOne("PetRoute.API.Data.Entities.Pet", "pet")
+                    b.HasOne("PetRoute.API.Data.Entities.Pet", null)
                         .WithMany("photoPets")
-                        .HasForeignKey("petId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("pet");
+                        .HasForeignKey("PetId");
                 });
 
             modelBuilder.Entity("PetRoute.API.Data.Entities.ScheduledTrip", b =>

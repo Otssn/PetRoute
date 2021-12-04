@@ -40,21 +40,12 @@ namespace PetRoute.API.Data.Entities
 
         //TODO: Fix the images path
         [Display(Name = "Foto")]
-        public string ImageFullPath =>logerType == LogerType.Email ? ImageId == Guid.Empty
-            ? $"https://petrouteapi20211202104619.azurewebsites.net/images/noimage.png"
-            : $"https://petroute.blob.core.windows.net/users/{ImageId}"
-            : string.IsNullOrEmpty(SocialImageURL)
-            ? $"https://petrouteapi20211202104619.azurewebsites.net/images/noimage.png"
-            : SocialImageURL;
+        public string ImageFullPath => ImageId == Guid.Empty
+            ? $"https://localhost:44355/images/noimage.png"
+            : $"https://petroute.blob.core.windows.net/users/{ImageId}";
 
-        [Display(Name = "Tipo de usuario")]
+        [Display(Name = "Tipo de usuarios")]
         public UserType userType { get; set; }
-
-        [Display(Name = "Tipo de login")]
-        public LogerType logerType { get; set; }
-
-        [Display(Name = "Foto")]
-        public String SocialImageURL { get; set; }
 
         [Display(Name = "Usuario")]
         public string FullName => $"{FirstName} {LastName}";
